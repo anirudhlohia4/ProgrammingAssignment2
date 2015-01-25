@@ -1,3 +1,5 @@
+
+
 #below are sample commands to run the function
 #mt <- matrix(c(2,3,2,2),2,2)
 #source("cachematrix.R")
@@ -29,7 +31,7 @@ makeCacheMatrix <- function(mx=matrix()){
     get.env  <- function() environment()
     
     #returns list of functions
-    list(get=get,get.invt.mx=get.invt.mx,set=set,get.env=get.env)    
+    list(get=get,get.invt.mx=get.invt.mx,set.invt.mx=set.invt.mx,get.env=get.env)    
 }
 
 #cacheSolve: This function takes makeCacheMatrix function as its parameter. It 
@@ -39,7 +41,7 @@ cacheSolve <- function(cacheM,...){
 	#check inverse matrix exist or not
     if(is.null(cacheM$get.invt.mx())){
         print("Inverse not found, setting inverse")
-        cacheM$set(solve(cacheM$get()))
+        cacheM$set.invt.mx(solve(cacheM$get()))
     }else{
         print("Inverse fetched from memory")
     }
